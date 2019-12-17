@@ -6,6 +6,6 @@
 ## 流程
 ### //1.Create public key and private key
     //1-1 隨意選擇兩個大的質數p和q, p!=q, find N=q*p
-    //1-2 求r=phi(N);
-    //1-3 選一個小於r的整數e, (e, r)=1
-    //1-4 求d, ed = 1 mod r
+    //1-2 取e, (e, phi(N))=1
+    //1-3 求d, ed = 1 mod phi(N)
+    //1-4 public kye(N, e), private key d

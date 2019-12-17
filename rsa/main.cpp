@@ -10,9 +10,19 @@ int phi(int n);
 int gcd(int a, int b);
 int modInverse(int a, int n);//ax == 1 mod n
 int mod(int a, int b);
+int N, d, e;
+void inial();
 int main()
 {
-    int p, q, N, phiN, e, d;
+    inial();
+    printf("Public Key : (%d, %d)\n", N, e);
+    printf("Private key : %d\n", d);
+    return 0;
+}
+
+void inial()
+{
+     int p, q, phiN;
     //1.Initialization
     //1-1 隨意選擇兩個大的質數p和q, p!=q, find N=q*p
     srand(time(NULL));
@@ -34,10 +44,9 @@ int main()
     d = modInverse(e, phiN);
     printf("d = %d\n", d);
     //1-4 public kye(N, e), private key d
-    printf("Public Key : (%d, %d)\n", N, e);
-    printf("Private key : %d\n", d);
-    return 0;
+
 }
+
 
 int getPrime(int n)
 {
