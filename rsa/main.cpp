@@ -4,25 +4,36 @@
 #include <time.h>
 
 using namespace std;
+
+int N, d, e;
+void inial();
+
 int getPrime(int n);//取得第n個質數
 int isPrime(int n);//判斷n是不是質數
 int phi(int n);
 int gcd(int a, int b);
 int modInverse(int a, int n);//ax == 1 mod n
 int mod(int a, int b);
-int N, d, e;
-void inial();
+char encrypt(char c);//對字元c進行加密
 int main()
 {
+    //1.Initialization
     inial();
     printf("Public Key : (%d, %d)\n", N, e);
     printf("Private key : %d\n", d);
+    N = 143;
+    d = 103;
+    e=7;
+    char m;
+    while (scanf("%c", &m)!= EOF) {
+        printf("%c\n", encrypt(m));
+    }
     return 0;
 }
 
 void inial()
 {
-     int p, q, phiN;
+    int p, q, phiN;
     //1.Initialization
     //1-1 隨意選擇兩個大的質數p和q, p!=q, find N=q*p
     srand(time(NULL));
@@ -43,8 +54,6 @@ void inial()
     //1-3 求d, ed = 1 mod phi(N)
     d = modInverse(e, phiN);
     printf("d = %d\n", d);
-    //1-4 public kye(N, e), private key d
-
 }
 
 
@@ -98,8 +107,8 @@ int modInverse(int a, int n)
     while (t[4]!= 1) {
         t[5] = t[1] - (t[3]*(t[2]/t[4]));
         t[6] = mod(t[2], t[4]);
-        for (int i=1; i<=4; i++){
-             t[i] = t[i+2];
+        for (int i=1; i<=4; i++) {
+            t[i] = t[i+2];
         }
         //printf("%2d * %2d = %3d mod %3d\n", a, t[3], t[4], n);//can delete
     }
@@ -111,4 +120,9 @@ int mod(int a, int b)
 {
     if (a < 0) return b + (a%b);
     else return (a%b);
+}
+
+char encrypt(char c)
+{
+    return c;
 }
