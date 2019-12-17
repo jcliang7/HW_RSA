@@ -35,18 +35,19 @@ int main()
     }
     m[len] = '\0';
 
-    printf("The cyphertext is :\n");
+    printf("\nThe cypher text is :\n");
     for (int i=0; i<len; i++) {
         myC[i] = encrypt(m[i], e, N);
         printf("%d ", myC[i]);
     }
     printf("\n");
-    printf("\nplaintext after decryption:\n");
+    printf("\nThe message after decryption:\n");
     for (int i=0; i<len; i++) {
         myM[i] = encrypt(myC[i], d, N);
         printf("%c", myM[i]);
     }
     printf("\n");
+
 
     return 0;
 }
@@ -79,6 +80,7 @@ int initial()
     if(encrypt(test, d, N)!=126) {
         return 0;
     }
+    printf("p=%d, q=%d, N=%d, phiN=%d, e=%d, d=%d\n\n", p, q, N, phiN, e, d);
     return 1;
 }
 
